@@ -1,0 +1,88 @@
+﻿@model SimpleExampleUsingRedis.Models.Car
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактирование машины</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 20px;
+        }
+        form {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #4CAF50;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Редактирование машины</h2>
+    <form asp-action="edit" asp-controller="home" asp-route-id="@Model.Id">
+        <p>
+            <label asp-for="Brand">Бренд</label>
+            <input type="text" asp-for="Brand" />
+        </p>
+        <p>
+            <label asp-for="Model">Модель</label>
+            <input type="text" asp-for="Model" />
+        </p>
+        <p>
+            <label asp-for="EngineCapacity">Объем двигателя</label>
+            <input type="text" asp-for="EngineCapacity" />
+        </p>
+        <p>
+            <label asp-for="EnginePower">Мощность двигателя</label>
+            <input type="text" asp-for="EnginePower" />
+        </p>
+        <p>
+            <label asp-for="CPP">КПП</label>
+            <input type="text" asp-for="CPP" />
+        </p>
+        <p>
+            <label asp-for="MaxSpeed">Максимальная скорость</label>
+            <input type="text" asp-for="MaxSpeed" />
+        </p>
+        <p>
+            <input type="submit" value="Отправить" />
+        </p>
+    </form>
+</body>
+</html>

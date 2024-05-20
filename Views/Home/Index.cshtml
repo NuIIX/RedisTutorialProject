@@ -1,0 +1,98 @@
+﻿@model IEnumerable<SimpleExampleUsingRedis.Models.Car>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список машин</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 20px;
+        }
+        p {
+            text-align: center;
+        }
+        a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #FFFFFF;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        .edit-btn, .delete-btn {
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            color: white;
+            margin: 5px;
+        }
+        .edit-btn {
+            background-color: #4CAF50;
+        }
+        .delete-btn {
+            background-color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <h2>Список машин</h2>
+    <p><a asp-action="Create" class="edit-btn">Добавить машину</a></p>
+    <table class="table">
+     <tr>
+         <th><a asp-action="Index" asp-route-sortOrder="@ViewBag.BrandSort"/>Бренд</th>
+         <th><a asp-action="Index" asp-route-sortOrder="@ViewBag.ModelSort"/>Модель</th>
+         <th><a asp-action="Index" asp-route-sortOrder="@ViewBag.EngineCapacitySort"/>Объем двигателя</th>
+         <th><a asp-action="Index" asp-route-sortOrder="@ViewBag.EnginePowerSort"/>Мощность двигателя</th>
+         <th><a asp-action="Index" asp-route-sortOrder="@ViewBag.CPPSort"/>КПП</th>
+         <th><a asp-action="Index" asp-route-sortOrder="@ViewBag.MaxSpeedSort"/>Максимальная скорость</th>
+     </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Brand</td>
+            <td>@item.Model</td>
+            <td>@item.EngineCapacity</td>
+            <td>@item.EnginePower</td>
+            <td>@item.CPP</td>
+            <td>@item.MaxSpeed</td>
+            <td>
+                <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id" class="edit-btn">Изменить</a>
+            </td>
+            <td>
+                <form asp-controller="Home" asp-action="Delete" method="post"  asp-route-id="@item.Id">
+                    <input type="submit" value="Удалить" class="delete-btn" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+</body>
+</html>
